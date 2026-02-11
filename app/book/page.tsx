@@ -1,35 +1,83 @@
-import Header from "../components/Header";
-
-export default function Book() {
+export default function BookPage() {
   return (
-    <main className="min-h-screen glitter-bg">
-      <Header />
+    <main className="section">
+      <div className="container">
+        <h1 className="sectionTitle">Book an Appointment</h1>
+        <div className="sectionLine" />
 
-      <section className="max-w-xl mx-auto px-4 py-12">
-        <h1 className="text-3xl font-bold mb-6">Book Appointment</h1>
+        <p className="lead">
+          Choose your preferred service, date, and time. Appointments are confirmed after deposit payment.
+          For press-on orders, include accurate nail measurements and design preferences.
+        </p>
 
-        <form className="glow-card rounded-2xl p-6 space-y-4">
-          <input
-            type="text"
-            placeholder="Full Name"
-            className="w-full p-3 rounded-xl border"
-          />
+        <div style={{ height: 18 }} />
 
-          <input
-            type="email"
-            placeholder="Email"
-            className="w-full p-3 rounded-xl border"
-          />
+        <form
+          className="card"
+          style={{ padding: 18, maxWidth: 720 }}
+          onSubmit={(e) => {
+            e.preventDefault();
+            alert("Booking request received! (Demo)");
+          }}
+        >
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+            <input
+              required
+              placeholder="Full Name"
+              style={inputStyle}
+            />
+            <input
+              required
+              placeholder="Phone / WhatsApp"
+              style={inputStyle}
+            />
+            <input
+              required
+              type="email"
+              placeholder="Email"
+              style={inputStyle}
+            />
+            <select required style={inputStyle}>
+              <option value="">Select Service</option>
+              <option>Acrylic Full Set</option>
+              <option>Gel Full Set</option>
+              <option>Refill</option>
+              <option>Press-on Order</option>
+              <option>Nail Art / Custom</option>
+            </select>
 
-          <input type="date" className="w-full p-3 rounded-xl border" />
+            <input required type="date" style={inputStyle} />
+            <input required type="time" style={inputStyle} />
+          </div>
 
-          <input type="time" className="w-full p-3 rounded-xl border" />
+          <div style={{ marginTop: 12 }}>
+            <textarea
+              placeholder="Notes (design ideas, nail length, extras, press-on measurements)"
+              rows={5}
+              style={{ ...inputStyle, width: "100%" }}
+            />
+          </div>
 
-          <button type="submit" className="w-full luxe-btn">
-            Confirm Booking ✨
-          </button>
+          <div style={{ marginTop: 14, display: "flex", gap: 12, flexWrap: "wrap" }}>
+            <button type="submit" className="btnPrimary">Submit Booking</button>
+            <a className="btnSecondary" href="/services">View Prices (SLE)</a>
+          </div>
+
+          <div style={{ marginTop: 14 }} className="lead">
+            For inquiries, contact us via WhatsApp or Instagram.
+          </div>
         </form>
-      </section>
+      </div>
     </main>
   );
 }
+
+const inputStyle: React.CSSProperties = {
+  width: "100%",
+  padding: "12px 12px",
+  border: "1px solid rgba(0,0,0,.15)",
+  fontFamily: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial",
+  fontSize: "14px",
+  outline: "none",
+  background: "rgba(255,255,255,.92)",
+};
