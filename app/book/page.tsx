@@ -1,4 +1,13 @@
+"use client";
+
+import React from "react";
+
 export default function BookPage() {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    alert("Booking request received! (Demo)");
+  }
+
   return (
     <main className="section">
       <div className="container">
@@ -12,33 +21,14 @@ export default function BookPage() {
 
         <div style={{ height: 18 }} />
 
-        <form
-          className="card"
-          style={{ padding: 18, maxWidth: 720 }}
-          onSubmit={(e) => {
-            e.preventDefault();
-            alert("Booking request received! (Demo)");
-          }}
-        >
+        <form className="card" style={{ padding: 18, maxWidth: 720 }} onSubmit={handleSubmit}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-            <input
-              required
-              placeholder="Full Name"
-              style={inputStyle}
-            />
-            <input
-              required
-              placeholder="Phone / WhatsApp"
-              style={inputStyle}
-            />
-            <input
-              required
-              type="email"
-              placeholder="Email"
-              style={inputStyle}
-            />
-            <select required style={inputStyle}>
-              <option value="">Select Service</option>
+            <input required placeholder="Full Name" style={inputStyle} />
+            <input required placeholder="Phone / WhatsApp" style={inputStyle} />
+            <input required type="email" placeholder="Email" style={inputStyle} />
+
+            <select required style={inputStyle} defaultValue="">
+              <option value="" disabled>Select Service</option>
               <option>Acrylic Full Set</option>
               <option>Gel Full Set</option>
               <option>Refill</option>
@@ -59,14 +49,28 @@ export default function BookPage() {
           </div>
 
           <div style={{ marginTop: 14, display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <button type="submit" className="btnPrimary">Submit Booking</button>
-            <a className="btnSecondary" href="/services">View Prices (SLE)</a>
+            <button type="submit" className="btn btnPrimary">Submit Booking</button>
+            <a className="btn" href="/services">View Prices (SLE)</a>
           </div>
 
           <div style={{ marginTop: 14 }} className="lead">
             For inquiries, contact us via WhatsApp or Instagram.
           </div>
         </form>
+
+        <div style={{ height: 22 }} />
+
+        <div className="card" style={{ padding: 18, maxWidth: 720 }}>
+          <h2 style={{ marginTop: 0 }}>Booking Policy</h2>
+          <ul className="ul">
+            <li>A non-refundable deposit is required to confirm all appointments</li>
+            <li>Appointments are confirmed only after deposit payment</li>
+            <li>Late arrivals beyond 15 minutes may be cancelled</li>
+            <li>No-shows result in loss of deposit</li>
+            <li>Deposits are transferable once with at least 24 hours notice</li>
+            <li>Press-on orders require full payment before production</li>
+          </ul>
+        </div>
       </div>
     </main>
   );
